@@ -18,7 +18,7 @@ echo $choise
 	case $choise in
 	"1)")
 		echo
-		is_server_awake $ip
+		is_server_awake 192.168.1.1
 	;;
 	"2)")
 		echo OpenWrt Backup
@@ -103,7 +103,7 @@ echo $choise
 	case $choise in
 	"1)")
 		echo
-		is_server_awake 192.168.$ip
+		is_server_awake 192.168.1.1
 	;;
 	"2)")
 		echo OpenWrt Backup
@@ -175,7 +175,7 @@ function upload_backup()
 	if [ $? -eq 0  ]
 	then
 		echo Host reachable
-		mount -t nfs $ip:/nfs/name /mnt/ -o nolock
+		mount -t nfs $ip:/nfs/kecaj /mnt/ -o nolock
 		if [ $? -eq 0 ]
 		then
 			mac=$(echo $(uci get network.lan_eth0_1_dev.macaddr) | sed s/:/-/g)
@@ -301,5 +301,4 @@ function ping_test()
 	return $?
 }
  
-
 
